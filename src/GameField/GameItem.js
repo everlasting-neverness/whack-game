@@ -8,7 +8,7 @@ export class GameItem extends React.Component {
           let GameItem = [];
           for (let i = 0; i < 6; i++) {
             GameItem.push(
-              <div className="game-cover">
+              <div className="game-cover up">
                 <div className="appearance" />
               </div>
             );

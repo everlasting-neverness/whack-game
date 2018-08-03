@@ -9,7 +9,6 @@ body {
 }
 
 .user-bar-block {
-  margin-top: 35px;
   padding: 10px;
   text-align: center;
 }
@@ -21,4 +20,46 @@ body {
 .start {
   border: none;
   padding: 6px;
+}
+
+.game-field {
+  width: 700px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  margin-bottom: 0;
+
+}
+
+.game-cover {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.game-cover:after {
+  display: block;
+  margin-top: 50px;
+  background: url(./static/bathtub-clipart.svg) bottom center no-repeat;
+  background-size: contain;
+  content: '';
+  width: 100%;
+  height: 130px;
+  position: absolute;
+  z-index: 2;
+}
+
+.appearance {
+  background:url(./static/fish-little-mermaid.svg) bottom center no-repeat;
+  background-size:60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 70%;
+  transition:all 0.4s;
+}
+
+.game-cover.up .appearance {
+  top:0;
 }
