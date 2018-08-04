@@ -8,9 +8,11 @@ export class UserBar extends React.Component {
         <h3 className="score-header">
           {" "}
           Whacked
-          <span className="score"> 0</span>
+          <span className="score"> {`${this.props.score}`}</span>
         </h3>
-        <button className="start">Start</button>
+        <button className="start" onClick={this.props.startGame}>
+          Start
+        </button>
       </div>
     );
   }

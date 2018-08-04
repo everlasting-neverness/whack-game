@@ -1,6 +1,10 @@
 import React from "react";
 
 export class GameItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="game-field">
@@ -8,7 +12,7 @@ export class GameItem extends React.Component {
           let GameItem = [];
           for (let i = 0; i < 6; i++) {
             GameItem.push(
-              <div className="game-cover up">
+              <div className="game-cover">
                 <div className="appearance" />
               </div>
             );
