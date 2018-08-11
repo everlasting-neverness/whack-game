@@ -47,8 +47,8 @@ export class Game {
     startInterval(this.selectRandomCell.bind(this), generateInterval);
     setTimeout(() => {
       clearTimeout(timerId);
+      this.playing = false;
     }, 10000);
-    this.cells.forEach(cell => (cell.active = false));
   }
 
   selectRandomCell() {
@@ -66,18 +66,20 @@ export class Game {
   }
 
   select(index) {
-    if (this.cells[index].active) {
-      this.score += 10;
-      this.cells[index].active = false;
-      clearTimeout(this.cells[index].timerId);
-      if (this.subscriber) {
-        this.subscriber();
-      }
-    } else {
-      this.score -= 5;
-      clearTimeout(this.cells[index].timerId);
-      if (this.subscriber) {
-        this.subscriber();
+    if (this.playing === true) {
+      if (this.cells[index].active) {
+        this.score += 10;
+        this.cells[index].active = false;
+        clearTimeout(this.cells[index].timerId);
+        if (this.subscriber) {
+          this.subscriber();
+        }
+      } else {
+        this.score -= 5;
+        clearTimeout(this.cells[index].timerId);
+        if (this.subscriber) {
+          this.subscriber();
+        }
       }
     }
   }

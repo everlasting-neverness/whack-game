@@ -54,7 +54,7 @@ body {
   background: url(./static/fish-little-mermaid.svg) bottom center no-repeat;
   background-size:60%;
   position: absolute;
-  top: 30%;
+  top: 10%;
   width: 100%;
   height: 60%;
   opacity: 0;

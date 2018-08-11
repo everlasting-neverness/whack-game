@@ -27,7 +27,6 @@ export class Main extends React.Component {
   }
 
   handleCellClick(e) {
-    console.log(e.target);
     this.gameInstance.select(e.currentTarget.dataset.id);
   }
 
