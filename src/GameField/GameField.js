@@ -3,6 +3,11 @@ import { GameItem } from "./GameItem.js";
 
 export class GameField extends React.Component {
   render() {
-    return <GameItem covers={this.props.covers} hit={this.props.hit} setCovers={this.props.setCovers}/>;
+    return (
+      <GameItem
+        cells={this.props.cells}
+        handleCellClick={this.props.handleCellClick}
+      />
+    );
   }
 }

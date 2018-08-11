@@ -10,7 +10,7 @@ export class UserBar extends React.Component {
           Whacked
           <span className="score"> {`${this.props.score}`}</span>
         </h3>
-        <button className="start" onClick={this.props.startGame}>
+        <button className="start" onClick={this.props.handleClick}>
           Start
         </button>
       </div>

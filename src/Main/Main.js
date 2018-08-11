@@ -1,76 +1,43 @@
 import React from "react";
 import { GameField } from "../GameField/GameField.js";
 import { UserBar } from "../UserBar/UserBar.js";
+import { Game } from "../Game/Game.js";
 
 export class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.setCovers = this.setCovers.bind(this);
-    this.randomTime = this.randomTime.bind(this);
-    this.randomCover = this.randomCover.bind(this);
-    this.lift = this.lift.bind(this);
-    this.hit = this.hit.bind(this);
-    this.startGame = this.startGame.bind(this);
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+    this.handleCellClick = this.handleCellClick.bind(this);
+    this.gameInstance = new Game();
+
     this.state = {
-      lastItem: null,
-      timeUp: false,
-      covers: null,
-      score: 0
+      cells: this.gameInstance.cells,
+      score: this.gameInstance.score
     };
+    this.gameInstance.subscribe(() => {
+      this.setState({
+        cells: this.gameInstance.cells,
+        score: this.gameInstance.score
+      });
+    });
   }
 
-  setCovers() {
-    this.setState({ covers });
+  handleClick() {
+    this.gameInstance.start();
   }
 
-  randomTime(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
-  }
-
-  randomCover(covers) {
-    const idx = Math.floor(Math.random() * covers.length);
-    const cover = covers[idx];
-    if (cover === lastItem) {
-      return this.randomCover(covers);
-    }
-    this.state.lastItem = cover;
-    return cover;
-  }
-
-  lift() {
-    const time = this.randomTime(200, 1000);
-    const hole = this.randomCover(this.state.covers);
-    cover.classList.add("up");
-    setTimeout(() => {
-      cover.classList.remove("up");
-      if (!this.state.timeUp) this.lift();
-    }, time);
-  }
-
-  //
-  hit(e) {
-    if (!e.isTrusted) return false;
-    if (e.target.classList.contains("appearance")) {
-      e.target.parentNode.classList.remove("up");
-      this.setState({ score: score++ });
-    }
-  }
-
-  startGame() {
-    this.setState({ score: 0 });
-    this.setState({ timeUp: false });
-    this.lift();
-    setTimeout(() => this.setState({ timeUp: true }), 10000);
+  handleCellClick(e) {
+    console.log(e.target);
+    this.gameInstance.select(e.currentTarget.dataset.id);
   }
 
   render() {
     return (
       <div className="main">
-        <UserBar score={this.state.score} startGame={this.startGame} />
+        <UserBar handleClick={this.handleClick} score={this.state.score} />
         <GameField
-          covers={this.state.covers}
-          hit={this.hit}
-          setCovers={this.setCovers}
+          cells={this.state.cells}
+          handleCellClick={this.handleCellClick}
         />
       </div>
     );
