@@ -1,0 +1,11 @@
+@media screen and (max-width: 770px) {
+  .game-field {
+    width: 500px;
+    height: 400px;
+    margin-top: 0;
+  }
+  .appearance {
+    background-size: 76%;
+    height: 89%;
+  }
+}

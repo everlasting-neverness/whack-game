@@ -9,7 +9,6 @@ export class Main extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleCellClick = this.handleCellClick.bind(this);
     this.gameInstance = new Game();
-
     this.state = {
       cells: this.gameInstance.cells,
       score: this.gameInstance.score
